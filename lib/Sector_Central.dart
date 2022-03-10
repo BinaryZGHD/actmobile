@@ -52,27 +52,28 @@ class _MyPageCentralState extends State<MyPageCentral> {
 
   List<FoodMenu> menu = [
     FoodMenu("1.ต้มยำกุ้ง",
-        "ต้มยำเป็นอาหารไทยที่กลายเป็นเอกลักษณ์อย่างหนึ่งของประเทศไทยนิยมรับประทานกันทุกภาคและเป็นที่นิยมสำหรับชาวต่างชาติ",
+        "     ต้มยำเป็นอาหารไทยที่กลายเป็นเอกลักษณ์อย่างหนึ่งของประเทศไทยนิยมรับประทานกันทุกภาคและเป็นที่นิยมสำหรับชาวต่างชาติ",
         "assets/menuC/Tom_Yum_Goong_C.jpg",
         "Page_Tom_Yom_C1",
         "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/e3de5-jpg.jpeg"),
     FoodMenu(
         "2.แกงเทโพ",
-        "แกงเผ็ดชนิดหนึ่ง ใส่กะทิ ผักบุ้งและหมูสามชั้นดั้งเดิมนั้นใส่ปลาเทโพเท่านั้น แต่ปัจจุบันนิยมใส่หมูสามชั้นแกงเทโพเป็นแกงกะทิรสเข้มข้น ",
+        "     แกงเผ็ดชนิดหนึ่ง ใส่กะทิ ผักบุ้งและหมูสามชั้นดั้งเดิมนั้นใส่ปลาเทโพเท่านั้น แต่ปัจจุบันนิยมใส่หมูสามชั้นแกงเทโพเป็นแกงกะทิรสเข้มข้น ",
         "assets/menuC/Kang_ThePho_C.jpg",
         "Kang_ThePho_C2",
         "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/46411-jpg.jpeg"),
     FoodMenu("3.แกงเขียวหวานลูกชิ้นปลากราย",
-        "เป็นอาหารไทยแท้ ที่มีกำเนิดในประเทศไทย ได้รับอิทธิพลการใช้เครื่องเทศ และกะทิจากอินเดียและอาหรับเนื้อสัตว์ เช่น เนื้อวัว ปลา ไก่ หรือหมู  ",
+        "     เป็นอาหารไทยแท้ ที่มีกำเนิดในประเทศไทย ได้รับอิทธิพลการใช้เครื่องเทศ และกะทิจากอินเดียและอาหรับเนื้อสัตว์ เช่น เนื้อวัว ปลา ไก่ หรือหมู  ",
         "assets/menuC/Green_Curry_C.jpg",
         "Page_Tom_Yom_C1",
         "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/a78b0-jpg.jpeg"),
-    FoodMenu("4.แกงมัสมั่นไก่", "แกงมัสมั่น เป็นอาหารที่ได้รับอิทธิพลมาจากอาหารมลายู ชาวไทยมุสลิมเรียกแกงชนิดนี้ว่า ซาละหมั่น แกงมัสมั่นแบบไทย ออกรสหวานในขณะที่ตำรับดั้งเดิมของชาวมุสลิมออกรสเค็มมัน",
+    FoodMenu("4.แกงมัสมั่นไก่",
+        "     แกงมัสมั่น เป็นอาหารที่ได้รับอิทธิพลมาจากอาหารมลายู ชาวไทยมุสลิมเรียกแกงชนิดนี้ว่า ซาละหมั่น แกงมัสมั่นแบบไทย ออกรสหวานในขณะที่ตำรับดั้งเดิมของชาวมุสลิมออกรสเค็มมัน",
         "assets/menuC/Chicken_Massaman_C.jpg",
         "Kang_ThePho_C2",
         "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/cb509-jpg.jpeg"),
     FoodMenu("5.แกงเผ็ดไก่ใส่หน่อไม้",
-        "แกงเผ็ด เป็นแกงกะทิที่สามารถเลือกสรรเนื้อสัตว์และผักในแกงได้หลายแบบ แกงชนิดนี้เมื้อใส่ไก่เป็นส่วนผสมหลัก จึงเรียก แกงเผ็ดไก่ เป็นต้น",
+        "     แกงเผ็ด เป็นแกงกะทิที่สามารถเลือกสรรเนื้อสัตว์และผักในแกงได้หลายแบบ แกงชนิดนี้เมื้อใส่ไก่เป็นส่วนผสมหลัก จึงเรียก แกงเผ็ดไก่ เป็นต้น",
         "assets/menuC/Bamboo_Shoots_C.png",
         "Page_Tom_Yom_C1",
         "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/a5119-jpg.jpeg")
@@ -152,31 +153,51 @@ class _MyPageCentralState extends State<MyPageCentral> {
                           MaterialPageRoute(
                               builder: (BuildContext context) {
                                 int goPage = index;
-                                switch(goPage) {
-                                  case 0: {
-                                    return Page_Tom_Yom_C1();
-                                  }break;
-
-                                  case 1: {
-                                    return Kang_ThePho_C2(); }
-                                  break;
-
-                                  case 2: {
-                                    return Green_Curry_C3();}
-                                  break;
-
-                                  case 3: {
-                                    return Chicken_Massaman_C4(); }
-                                  break;
-
-                                  case 4: {
-                                    return Bamboo_Shoots_C5(); }
-                                  break;
-                                  default: {
-                                    return Page_Central(); }
-                                  break;
-
+                                if(goPage == 0){
+                                  return Page_Tom_Yom_C1();
                                 }
+                                else if (goPage == 1){
+                                  return Kang_ThePho_C2();
+                                }
+                                else if (goPage == 2){
+                                  return Green_Curry_C3();
+                                }
+                                else if (goPage == 3){
+                                  return Chicken_Massaman_C4();
+                                }
+                                else if (goPage == 4){
+                                  return Bamboo_Shoots_C5();
+                                }
+                                else{
+                                  return Page_Central();
+                                }
+
+
+                                // switch(goPage) {
+                                //   case 0: {
+                                //     return Page_Tom_Yom_C1();
+                                //   }break;
+                                //
+                                //   case 1: {
+                                //     return Kang_ThePho_C2(); }
+                                //   break;
+                                //
+                                //   case 2: {
+                                //     return Green_Curry_C3();}
+                                //   break;
+                                //
+                                //   case 3: {
+                                //     return Chicken_Massaman_C4(); }
+                                //   break;
+                                //
+                                //   case 4: {
+                                //     return Bamboo_Shoots_C5(); }
+                                //   break;
+                                //   default: {
+                                //     return Page_Central(); }
+                                //   break;
+                                //
+                                // }
 
 
                               }
