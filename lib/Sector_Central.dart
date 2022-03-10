@@ -8,8 +8,6 @@ import 'package:actmobile/MENU_CENTRAL/Page_Menu_3.dart';
 import 'package:actmobile/MENU_CENTRAL/Page_Menu_4.dart';
 import 'package:actmobile/MENU_CENTRAL/Page_Menu_5.dart';
 
-
-
 import 'MENU_CENTRAL/Page_Menu_1.dart';
 import 'MENU_CENTRAL/Page_Menu_2.dart';
 import 'MENU_CENTRAL/Page_Menu_3.dart';
@@ -17,17 +15,15 @@ import 'MENU_CENTRAL/Page_Menu_4.dart';
 import 'MENU_CENTRAL/Page_Menu_5.dart';
 import 'card_food_Menu.dart';
 
-
-
-
-
 class Page_Central extends StatelessWidget {
   const Page_Central({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MyPageCentral(title: "MyHPc",);
+    return MyPageCentral(
+      title: "MyHPc",
+    );
   }
 }
 
@@ -49,9 +45,9 @@ class _MyPageCentralState extends State<MyPageCentral> {
     });
   }
 
-
   List<FoodMenu> menu = [
-    FoodMenu("1.ต้มยำกุ้ง",
+    FoodMenu(
+        "1.ต้มยำกุ้ง",
         "     ต้มยำเป็นอาหารไทยที่กลายเป็นเอกลักษณ์อย่างหนึ่งของประเทศไทยนิยมรับประทานกันทุกภาคและเป็นที่นิยมสำหรับชาวต่างชาติ",
         "assets/menuC/Tom_Yum_Goong_C.jpg",
         "Page_Tom_Yom_C1",
@@ -62,17 +58,20 @@ class _MyPageCentralState extends State<MyPageCentral> {
         "assets/menuC/Kang_ThePho_C.jpg",
         "Kang_ThePho_C2",
         "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/46411-jpg.jpeg"),
-    FoodMenu("3.แกงเขียวหวานลูกชิ้นปลากราย",
+    FoodMenu(
+        "3.แกงเขียวหวานลูกชิ้นปลากราย",
         "     เป็นอาหารไทยแท้ ที่มีกำเนิดในประเทศไทย ได้รับอิทธิพลการใช้เครื่องเทศ และกะทิจากอินเดียและอาหรับเนื้อสัตว์ เช่น เนื้อวัว ปลา ไก่ หรือหมู  ",
         "assets/menuC/Green_Curry_C.jpg",
         "Page_Tom_Yom_C1",
         "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/a78b0-jpg.jpeg"),
-    FoodMenu("4.แกงมัสมั่นไก่",
+    FoodMenu(
+        "4.แกงมัสมั่นไก่",
         "     แกงมัสมั่น เป็นอาหารที่ได้รับอิทธิพลมาจากอาหารมลายู ชาวไทยมุสลิมเรียกแกงชนิดนี้ว่า ซาละหมั่น แกงมัสมั่นแบบไทย ออกรสหวานในขณะที่ตำรับดั้งเดิมของชาวมุสลิมออกรสเค็มมัน",
         "assets/menuC/Chicken_Massaman_C.jpg",
         "Kang_ThePho_C2",
         "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/cb509-jpg.jpeg"),
-    FoodMenu("5.แกงเผ็ดไก่ใส่หน่อไม้",
+    FoodMenu(
+        "5.แกงเผ็ดไก่ใส่หน่อไม้",
         "     แกงเผ็ด เป็นแกงกะทิที่สามารถเลือกสรรเนื้อสัตว์และผักในแกงได้หลายแบบ แกงชนิดนี้เมื้อใส่ไก่เป็นส่วนผสมหลัก จึงเรียก แกงเผ็ดไก่ เป็นต้น",
         "assets/menuC/Bamboo_Shoots_C.png",
         "Page_Tom_Yom_C1",
@@ -83,16 +82,26 @@ class _MyPageCentralState extends State<MyPageCentral> {
     //     "assets/menuC/AdobeLightroom.jpg",
     //     "Page_Tom_Yom_C1",
     //     "http://www.thaifoodheritage.com/uploads/recipe_list/gallery/a5119-jpg.jpeg")
-
   ];
 
+  // Explicit
 
+  // Method
+  Widget LiteButton() {
+    return IconButton(
+      icon: Icon(Icons.favorite),
+      onPressed: () {
+        print('MENU BEER');
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("5 เมนูอาหารภาคกลางห้ามพลาด"),
+        actions: [LiteButton()],
       ),
       backgroundColor: Colors.black,
       body: ListView.builder(
@@ -111,13 +120,12 @@ class _MyPageCentralState extends State<MyPageCentral> {
                         Container(
                           height: 50,
                           width: 300,
-                          margin: EdgeInsets.symmetric(horizontal : 10.0),
+                          margin: EdgeInsets.symmetric(horizontal: 10.0),
                           alignment: Alignment(0.0, 0.0),
-
                           child: Text(
-                              food.nfood,
-                            style: TextStyle(color:Colors.blue[900],
-                                fontSize:20),
+                            food.nfood,
+                            style: TextStyle(
+                                color: Colors.blue[900], fontSize: 20),
                           ),
                         ),
                         Container(
@@ -133,79 +141,64 @@ class _MyPageCentralState extends State<MyPageCentral> {
                             ),
                           ),
                         ),
-
-
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                              food.subnfood,
-                            style: TextStyle(color:Colors.black,
-                                fontSize:12),
+                            food.subnfood,
+                            style: TextStyle(color: Colors.black, fontSize: 12),
                           ),
                         ),
-
                       ],
                     ),
                     onTap: () {
                       // print(index);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) {
-                                int goPage = index;
-                                if(goPage == 0){
-                                  return Page_Tom_Yom_C1();
-                                }
-                                else if (goPage == 1){
-                                  return Kang_ThePho_C2();
-                                }
-                                else if (goPage == 2){
-                                  return Green_Curry_C3();
-                                }
-                                else if (goPage == 3){
-                                  return Chicken_Massaman_C4();
-                                }
-                                else if (goPage == 4){
-                                  return Bamboo_Shoots_C5();
-                                }
-                                else{
-                                  return Page_Central();
-                                }
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        int goPage = index;
+                        if (goPage == 0) {
+                          return Page_Tom_Yom_C1();
+                        } else if (goPage == 1) {
+                          return Kang_ThePho_C2();
+                        } else if (goPage == 2) {
+                          return Green_Curry_C3();
+                        } else if (goPage == 3) {
+                          return Chicken_Massaman_C4();
+                        } else if (goPage == 4) {
+                          return Bamboo_Shoots_C5();
+                        } else {
+                          return Page_Central();
+                        }
 
-
-                                // switch(goPage) {
-                                //   case 0: {
-                                //     return Page_Tom_Yom_C1();
-                                //   }break;
-                                //
-                                //   case 1: {
-                                //     return Kang_ThePho_C2(); }
-                                //   break;
-                                //
-                                //   case 2: {
-                                //     return Green_Curry_C3();}
-                                //   break;
-                                //
-                                //   case 3: {
-                                //     return Chicken_Massaman_C4(); }
-                                //   break;
-                                //
-                                //   case 4: {
-                                //     return Bamboo_Shoots_C5(); }
-                                //   break;
-                                //   default: {
-                                //     return Page_Central(); }
-                                //   break;
-                                //
-                                // }
-
-
-                              }
-                          )
-                      );
+                        // switch(goPage) {
+                        //   case 0: {
+                        //     return Page_Tom_Yom_C1();
+                        //   }break;
+                        //
+                        //   case 1: {
+                        //     return Kang_ThePho_C2(); }
+                        //   break;
+                        //
+                        //   case 2: {
+                        //     return Green_Curry_C3();}
+                        //   break;
+                        //
+                        //   case 3: {
+                        //     return Chicken_Massaman_C4(); }
+                        //   break;
+                        //
+                        //   case 4: {
+                        //     return Bamboo_Shoots_C5(); }
+                        //   break;
+                        //   default: {
+                        //     return Page_Central(); }
+                        //   break;
+                        //
+                        // }
+                      }));
                     },
                   ),
                 ),
+
                 // Card(
                 //
                 //   child: ListTile(
@@ -272,10 +265,8 @@ class _MyPageCentralState extends State<MyPageCentral> {
                 //   ),
                 // ),
               ],
-            )
-            ;
+            );
           }),
     );
   }
 }
-
