@@ -5,21 +5,28 @@ import 'package:flutter/material.dart';
 // }
 
 class Page_Tom_Yom_C1 extends StatelessWidget {
-  const Page_Tom_Yom_C1({Key? key}) : super(key: key);
+
+  const Page_Tom_Yom_C1({Key? key, required this.nfood}) : super(key: key);
+  final String nfood ;
+
+
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MyPageCentral_C1(
-      title: "MyHPc",
+      title: "MyHPc", namefood: nfood,
     );
   }
 }
 
 class MyPageCentral_C1 extends StatefulWidget {
-  const MyPageCentral_C1({Key? key, required this.title}) : super(key: key);
+  const MyPageCentral_C1({Key? key, required this.title, required this.namefood}) : super(key: key);
 
   final String title;
+  final String namefood ;
+
+
 
   @override
   State<MyPageCentral_C1> createState() => _MyPageCentral_C1State();
@@ -37,7 +44,8 @@ class _MyPageCentral_C1State extends State<MyPageCentral_C1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ต้มยำกุ้ง"),
+        title: Text( widget.namefood),
+        // Text("ต้มยำกุ้ง"),
       ),
       body: SingleChildScrollView(
         child: Column(

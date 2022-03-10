@@ -154,20 +154,25 @@ class _MyPageCentralState extends State<MyPageCentral> {
                       // print(index);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (BuildContext context) {
-                        int goPage = index;
-                        if (goPage == 0) {
-                          return Page_Tom_Yom_C1();
-                        } else if (goPage == 1) {
-                          return Kang_ThePho_C2();
-                        } else if (goPage == 2) {
-                          return Green_Curry_C3();
-                        } else if (goPage == 3) {
-                          return Chicken_Massaman_C4();
-                        } else if (goPage == 4) {
-                          return Bamboo_Shoots_C5();
-                        } else {
-                          return Page_Central();
-                        }
+                            return Page_Tom_Yom_C1(nfood: menu[index].nfood,);
+                        // int goPage = index;
+                        // if (goPage == 0) {
+                        //   return Page_Tom_Yom_C1();
+                        // } else if (goPage == 1) {
+                        //   return Kang_ThePho_C2();
+                        // } else if (goPage == 2) {
+                        //   return Green_Curry_C3();
+                        // } else if (goPage == 3) {
+                        //   return Chicken_Massaman_C4();
+                        // } else if (goPage == 4) {
+                        //   return Bamboo_Shoots_C5();
+                        // } else {
+                        //   return Page_Central();
+                        // }
+
+
+
+
 
                         // switch(goPage) {
                         //   case 0: {
