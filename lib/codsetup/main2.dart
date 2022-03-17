@@ -2,7 +2,7 @@ import 'package:actmobile/feature_display_beer/beer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'feature_display_beer/beer_screen.dart';
+import '../feature_display_beer/beer_screen.dart';
 
 void main() {
   Bloc.observer = BeerBlocObserver();

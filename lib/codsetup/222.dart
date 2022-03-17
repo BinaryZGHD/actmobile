@@ -1,18 +1,18 @@
-import 'package:actmobile/MENU_CENTRAL/Page_Menu_ALL5.dart';
-import 'package:actmobile/Rowy.dart';
+import 'package:actmobile/codsetup/Page_Menu_ALL5.dart';
+import 'package:actmobile/codsetup/Rowy.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:actmobile/MENU_CENTRAL/Page_Menu_1.dart';
-import 'package:actmobile/MENU_CENTRAL/Page_Menu_2.dart';
-import 'package:actmobile/MENU_CENTRAL/Page_Menu_3.dart';
-import 'package:actmobile/MENU_CENTRAL/Page_Menu_4.dart';
-import 'package:actmobile/MENU_CENTRAL/Page_Menu_5.dart';
+import 'package:actmobile/page_Menu.dart';
+import 'package:actmobile/codsetup/Page_Menu_2.dart';
+import 'package:actmobile/codsetup/Page_Menu_3.dart';
+import 'package:actmobile/codsetup/Page_Menu_4.dart';
+import 'package:actmobile/codsetup/Page_Menu_5.dart';
 
-import 'MENU_CENTRAL/Page_Menu_1.dart';
-import 'MENU_CENTRAL/Page_Menu_2.dart';
-import 'MENU_CENTRAL/Page_Menu_3.dart';
-import 'MENU_CENTRAL/Page_Menu_4.dart';
-import 'MENU_CENTRAL/Page_Menu_5.dart';
+import '../page_Menu.dart';
+import 'Page_Menu_2.dart';
+import 'Page_Menu_3.dart';
+import 'Page_Menu_4.dart';
+import 'Page_Menu_5.dart';
 // void main() {
 //   runApp(const MyApp());
 // }
