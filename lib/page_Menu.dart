@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 //   runApp(const MyApp());
 // }
 
-class Page_Menu extends StatelessWidget {
+class Page_Menu_Detail extends StatelessWidget {
+  // Page_Menu
 
-  const Page_Menu({Key? key, required this.nfood, required this.imgf, required this.detailf, required this.dietf, required this.mashf, required this.methodf, }) : super(key: key);
+  const Page_Menu_Detail({Key? key, required this.nfood, required this.imgf, required this.detailf, required this.dietf, required this.mashf, required this.methodf, }) : super(key: key);
   final String nfood ;
   final String imgf ;
   final String detailf ;
@@ -19,7 +20,7 @@ class Page_Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyPage_Menu(
-      title: "MyHPc",
+      // title: "MyHPc",
       namefood: nfood,
       imgfood: imgf,
       detailfood:detailf,
@@ -31,13 +32,13 @@ class Page_Menu extends StatelessWidget {
 }
 
 class MyPage_Menu extends StatefulWidget {
-  const MyPage_Menu({Key? key, required this.title,
+  const MyPage_Menu({Key? key,
     required this.namefood, required this.imgfood,
     required this.detailfood, required this.dietfood,
     required this.mashfood, required this.methodfood,
   }) : super(key: key);
 
-  final String title;
+
   final String namefood ;
   final String imgfood ;
   final String detailfood ;

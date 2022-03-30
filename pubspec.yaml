@@ -78,7 +78,7 @@ flutter:
   assets:
 
     - assets/images/Tom_Yum_Goong_C.jpg
-
+    - assets/
 
     - assets/menuC/Tom_Yum_Goong_C.jpg
     - assets/menuC/Kang_ThePho_C.jpg

@@ -1,12 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:actmobile/page_Menu.dart';
 import 'page_Menu.dart';
 import 'card_food_Menu.dart';
 
-class Page_Central extends StatelessWidget {
-  const Page_Central({Key? key}) : super(key: key);
+class Page_Central_Home extends StatelessWidget {
+
+  const Page_Central_Home({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -18,9 +18,12 @@ class Page_Central extends StatelessWidget {
 }
 
 class MyPageCentral extends StatefulWidget {
-  const MyPageCentral({Key? key, required this.title}) : super(key: key);
+  MyPageCentral({Key? key, required this.title}) : super(key: key);
 
   final String title;
+  String changeTitle ="";
+
+
 
   @override
   State<MyPageCentral> createState() => _MyPageCentralState();
@@ -183,7 +186,6 @@ class _MyPageCentralState extends State<MyPageCentral> {
         "1.แบ่งหัวกะทิส่วนหนึ่งผัดให้แตกมัน ใส่เครื่องแกงเผ็ดลงผัด แล้วใส่หัวกะทิ ส่วนที่เหลือผัดจนหอม"
             "\n2. ใส่เนื้อไก่ลงผัดต่อจนเริ่มสุก เทลงในหม้อ ใส่หางกะทิ พอเดือดปรุงรสด้วยน้ำปลา น้ำตาลปี๊บ พอเดือดใส่หน่อไม้ที่เตรียมไว้ ทิ้งไว้สักพักให้เดือด แล้วฉีกใบมะกรูดใส่"
             "\n3. ใส่พริกชี้ฟ้าและใบโหระพา คนให้เข้ากันตักใส่ชามเสิร์ฟ"),
-
   ];
 
   // Explicit
@@ -191,7 +193,7 @@ class _MyPageCentralState extends State<MyPageCentral> {
   // Method
   Widget LiteButton() {
     return IconButton(
-      icon: Icon(Icons.favorite),
+      icon: const Icon(Icons.favorite),
       onPressed: () {
         print('MENU BEER');
       },
@@ -202,7 +204,8 @@ class _MyPageCentralState extends State<MyPageCentral> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("5 เมนูอาหารภาคกลางห้ามพลาด"),
+        title: Text(widget.changeTitle),
+        // const Text("5 เมนูอาหารภาคกลางต้องห้ามพลาด"),
         actions: [LiteButton()],
       ),
       backgroundColor: Colors.black,
@@ -213,17 +216,17 @@ class _MyPageCentralState extends State<MyPageCentral> {
             return Column(
               children: [
                 Card(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   elevation: 10,
-                  child: ListTile(
+                  child: InkWell(
                     // leading: Image.asset(food.img, width: 200.0, height: 200.0),
-                    title: Column(
+                    child: Column(
                       children: <Widget>[
                         Container(
                           height: 50,
                           width: 300,
-                          margin: EdgeInsets.symmetric(horizontal: 10.0),
-                          alignment: Alignment(0.0, 0.0),
+                          margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                          alignment: const Alignment(0.0, 0.0),
                           child: Text(
                             food.nfood,
                             style: TextStyle(
@@ -237,103 +240,42 @@ class _MyPageCentralState extends State<MyPageCentral> {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: new AssetImage(food.img),
+                              image:  AssetImage(food.img),
 
                               // image: NetworkImage(food.urlImage),
                             ),
                           ),
                         ),
+
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             food.subnfood,
-                            style: TextStyle(color: Colors.black, fontSize: 12),
+                            style: const TextStyle(color: Colors.black, fontSize: 12),
                           ),
                         ),
                       ],
                     ),
                     onTap: () {
+                      setState(() {
+                        widget.changeTitle = "เมนูอาหารจานเด็ด   ${menu[index].nfood}";
+                      });
+
                       // print(index);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
-                            return Page_Menu(
-                                nfood: menu[index].nfood,
-                                imgf: menu[index].img,
-                                detailf: menu[index].detailfood,
-                                dietf: menu[index].dietfood,
-                                mashf: menu[index].mashfood,
-                                methodf: menu[index].methodfood
-                            );
-                          }));
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (BuildContext context) {
+                      //   return Page_Menu_Detail(
+                      //
+                      //       nfood: menu[index].nfood,
+                      //       imgf: menu[index].img,
+                      //       detailf: menu[index].detailfood,
+                      //       dietf: menu[index].dietfood,
+                      //       mashf: menu[index].mashfood,
+                      //       methodf: menu[index].methodfood);
+                      // }));
                     },
                   ),
                 ),
-
-                // Card(
-                //
-                //   child: ListTile(
-                //     leading:
-                //     // SizedBox(
-                //     //   width: 150, // fixed width and height
-                //     //   // child: Image.asset("assets/Tom_Yum_Goong_C.jpg"),
-                //     //   child:
-                //     Container(
-                //       height: 150,
-                //       width: 100,
-                //       decoration: BoxDecoration(
-                //         borderRadius: BorderRadius.circular(5),
-                //         image: DecorationImage(
-                //           fit: BoxFit.cover,
-                //           image: NetworkImage(food.urlImage),
-                //           // image: NetworkImage(food.urlImage),
-                //         ),
-                //       ),
-                //     ),
-                //     // ),
-                //
-                //     title: Text(
-                //       food.nfood,
-                //       style: TextStyle(fontSize: 18),
-                //     ),
-                //     subtitle: Text(
-                //         food.subnfood,
-                //         style: TextStyle(fontSize: 12) ),
-                //     onTap: () {
-                //       print(index);
-                //       Navigator.push(
-                //           context,
-                //           MaterialPageRoute(
-                //               builder: (BuildContext context) {
-                //                 int goPage = index;
-                //                 switch(goPage) {
-                //                   case 0: {
-                //                     return Page_Tom_Yom_C1();
-                //                   }break;
-                //
-                //                   case 1: {
-                //                     return Kang_ThePho_C2(); }
-                //                   break;
-                //
-                //                   case 2: {  return Green_Curry_C3();}
-                //                   break;
-                //
-                //                   case 3: {   return Chicken_Massaman_C4(); }
-                //                   break;
-                //
-                //                   case 4: {   return Bamboo_Shoots_C5(); }
-                //                   break;
-                //                   default: {  return Page_Central(); }
-                //                   break;
-                //
-                //                 }
-                //
-                //
-                //               }
-                //           )
-                //       );
-                //     },
-                //   ),
-                // ),
               ],
             );
           }),
