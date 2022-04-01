@@ -1,18 +1,36 @@
 import 'dart:ui';
 import 'package:actmobile/constants.dart';
+import 'package:actmobile/page_Menu.dart';
+import 'package:actmobile/page_Central.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-class CustomDialogBox extends StatefulWidget {
-  final String title, descriptions, text;
-  final Image img;
+import 'card_food_Menu.dart';
+import 'feature_display_beer/beer_screen.dart';
 
-  const CustomDialogBox({Key? key, required this.title, required this.descriptions, required this.text, required this.img,}) : super(key: key);
+class Custom_Dialog_Box extends StatefulWidget {
+  final String title, id,
+      descriptions,
+      text,
+      nfood,
+      imgf,
+      detailf,
+      dietf,
+      mashf,
+      methodf;
+  final  String img;
+
+
+  const Custom_Dialog_Box({Key? key, required this.title, required this.descriptions,
+    required this.text, required this.img, required this.nfood, required this.imgf,
+    required this.detailf, required this.dietf, required this.mashf, required this.methodf, required this.id,  }) : super(key: key);
 
   @override
-  _CustomDialogBoxState createState() => _CustomDialogBoxState();
+  _Custom_Dialog_BoxState createState() => _Custom_Dialog_BoxState();
 }
 
-class _CustomDialogBoxState extends State<CustomDialogBox> {
+class _Custom_Dialog_BoxState extends State<Custom_Dialog_Box> {
+
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -25,7 +43,9 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
     );
   }
   contentBox(context){
+
     return Stack(
+
       children: <Widget>[
         Container(
           padding: EdgeInsets.only(left: Constants.padding,top: Constants.avatarRadius
@@ -54,7 +74,19 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                 alignment: Alignment.bottomRight,
                 child: TextButton(
                     onPressed: (){
-                      Navigator.of(context).pop();
+                      Navigator.push(context,
+                              MaterialPageRoute(builder: (BuildContext context) {
+                            int index = int.parse(widget.id);
+                            return Page_Menu_Detail(
+                                // data: recommends[index],
+                                nfood: '${index + 1}. ' + menu[index].nfood,
+                                imgf: menu[index].img,
+                                detailf: menu[index].detailfood,
+                                dietf: menu[index].dietfood,
+                                mashf: menu[index].mashfood,
+                                methodf: menu[index].methodfood);
+                              // DisplayBeerScreen();
+                          }));
                     },
                     child:
                     Container( constraints: BoxConstraints(maxWidth: 50.0, minHeight: 50.0),
@@ -79,7 +111,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             radius: Constants.avatarRadius,
             child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(Constants.avatarRadius)),
-                child: Image.asset("assets/BUS2.jpg",fit: BoxFit.cover,)
+                child: Image.asset(widget.img,fit: BoxFit.cover,)
             ),
           ),
         ),

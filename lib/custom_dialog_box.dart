@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class CustomDialogBox extends StatefulWidget {
   final String title, descriptions, text;
-  final Image img;
+  final String img;
 
-  const CustomDialogBox({Key? key, required this.title, required this.descriptions, required this.text, required this.img,}) : super(key: key);
+  const CustomDialogBox({Key? key, required this.title, required this.descriptions, required this.text, required this.img, required int index,}) : super(key: key);
 
   @override
   _CustomDialogBoxState createState() => _CustomDialogBoxState();
@@ -79,7 +79,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             radius: Constants.avatarRadius,
             child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(Constants.avatarRadius)),
-                child: Image.asset("assets/BUS2.jpg",fit: BoxFit.cover,)
+                child: Image.asset(widget.img,fit: BoxFit.cover,)
             ),
           ),
         ),

@@ -1,18 +1,22 @@
+import 'package:actmobile/fooditem.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:actmobile/page_Menu.dart';
+import 'package:flutter_svg/svg.dart';
+import 'category_box.dart';
+import 'data.dart';
+import 'feature_display_beer/beer_screen.dart';
+import 'page_Custom_Dialog_Box.dart';
 import 'page_Menu.dart';
 import 'card_food_Menu.dart';
 
 class Page_Central_Home extends StatelessWidget {
-
   const Page_Central_Home({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MyPageCentral(
-      title: "MyHPc",
+      title: "เมนูอาหารห้ามพลาด",
     );
   }
 }
@@ -21,9 +25,7 @@ class MyPageCentral extends StatefulWidget {
   MyPageCentral({Key? key, required this.title}) : super(key: key);
 
   final String title;
-  String changeTitle ="";
-
-
+  String changeTitle = "";
 
   @override
   State<MyPageCentral> createState() => _MyPageCentralState();
@@ -32,253 +34,378 @@ class MyPageCentral extends StatefulWidget {
 class _MyPageCentralState extends State<MyPageCentral> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  void onTabTapped(int index) {
     setState(() {
-      _counter++;
+      _counter = index;
     });
   }
-
-  List<FoodMenu> menu = [
-    FoodMenu(
-        "1.ต้มยำกุ้ง",
-        "     ต้มยำเป็นอาหารไทยที่กลายเป็นเอกลักษณ์อย่างหนึ่งของประเทศไทยนิยมรับประทานกันทุกภาคและเป็นที่นิยมสำหรับชาวต่างชาติ",
-        "assets/menuC/Tom_Yum_Goong_C.jpg",
-        "     ต้มยำเป็นอาหารไทยที่กลายเป็นเอกลักษณ์อย่างหนึ่งของประเทศไทย นิยมรับประทานกันทุกภาคและเป็นที่นิยมสำหรับชาวต่างชาติด้วย โดยเฉพาะอย่างยิ่ง ต้มยำกุ้ง ซึ่งมีทั้งแบบน้ำข้นและน้ำใส สูตรนี้เป็นต้มยำน้ำข้น ที่มีครบรส คือ เปรี้ยว เค็ม เผ็ด หวานเล็กน้อย",
-        "     ต้มยำกุ้ง เป็นอาหารที่อุดมด้วย แร่ธาตุ โปรตีน และคาร์โบไฮเดรต"
-            "มีไขมันน้อย กุ้งเป็นเนื้อสัตว์ที่มีโคเลสเตอรอลชนิดที่ดี มีประโยชน์ต่อร่างกาย"
-            "สามารถช่วยลดความเสี่ยงต่อการเกิดโรคหัวใจได้อีกด้วย รวมทั้งมีธาตุสังกะสีและซีลีเนียมในปริมาณสูง"
-            "ช่วยเสริมสร้างภูมิคุ้มกัน เพิ่มความต้านทานต่อการติดเชื้อ เครื่องสมุนไพรต้มยำ เช่น ข่า ตะไคร้"
-            "ใบมะกรูดมีสรรพคุณแก้ท้องอืด แก้ไอ แก้ช้ำใน ขับลมในลำไส้ แก้คลื่นเหียน แก้จุกเสียด ได้ดี",
-        "กุ้งแม่น้ำ 3 ตัว"
-            "\nเห็ดฟาง 100 กรัม"
-            "\nตะไคร้หั่นบาง 10 กรัม"
-            "\nตะไคร้หั่นท่อนบุบ 16 กรัม"
-            "\nรากผักชี 2 กรัม"
-            "\nใบมะกรูดฉีก 3 ใบ"
-            "\nน้ำต้มกระดูก 300 กรัม"
-            "\nพริกขี้หนูสวนบุบ 10 กรัม"
-            "\nน้ำปลา 3 ช้อนโต๊ะ"
-            "\nน้ำมะนาว 3 ช้อนโต๊ะ"
-            "\nนมข้นจืด 120 กรัม"
-            "\nน้ำพริกเผา 2 ช้อนโต๊ะ"
-            "\nผักชี",
-        "1.ต้มน้ำต้มกระดูกโดยใส่เปลือกกุ้ง ตะไคร้หั่นท่อน และรากผักชี เมื่อเดือดยกลงกรองเอาแต่น้ำเป็นน้ำสต็อก"
-            "\n2. นำน้ำสต็อกตั้งไฟ ใส่ตะไคร้ เห็ดฟาง พอน้ำเดือดใส่กุ้งรอจนเดือดแล้วใส่น้ำปลา ฉีกใบมะกรูดใส่ลงไป"
-            "\n3. ละลายน้ำพริกเผากับนมข้นจืดในชามเสิร์ฟ คนให้เข้ากัน เติมน้ำมะนาว พริกขี้หนูบุบ"
-            "\n4. ตักต้มยำใส่ชามเสิร์ฟ โรยหน้าด้วยผักชี"),
-    FoodMenu(
-        "2.แกงเทโพ",
-        "     แกงเผ็ดชนิดหนึ่ง ใส่กะทิ ผักบุ้งและหมูสามชั้นดั้งเดิมนั้นใส่ปลาเทโพเท่านั้น แต่ปัจจุบันนิยมใส่หมูสามชั้นแกงเทโพเป็นแกงกะทิรสเข้มข้น ",
-        "assets/menuC/Kang_ThePho_C.jpg",
-        "       แกงเผ็ดชนิดหนึ่ง ใส่กะทิ ผักบุ้งและหมูสามชั้นเป็นส่วนประกอบ"
-            "แกงเทโพดั้งเดิมนั้นใส่ปลาเทโพเท่านั้น แต่ปัจจุบันนิยมใส่หมูสามชั้น"
-            "แกงเทโพเป็นแกงกะทิรสเข้มข้น รสชาติออกเปรี้ยว เค็มนำ และหวานเล็กน้อย"
-            "มีกลิ่นหอมเฉพาะจากใบมะกรูดใช้ผักบุ้งยอดอ่อนๆ มาแกงกับกะทิและหมูสามชั้น"
-            "มีรสเปรี้ยวจากมะขามเปียกตัดความมันของกะทิ"
-            "ความสมดุลลงตัวของรสชาติทั้งสามรสคือความอร่อยของแกงชนิดนี้",
-        "     กะทิ เป็นสารอาหารประเภทไขมัน ที่ให้พลังงานความอบอุ่นแต่ร่างกาย"
-            "แต่ไขมันในกะทิ เป็นไขมันที่ มีประโยชน์มาก ช่วยละลายวิตามินเอ"
-            "ซึ่งจะทำให้ร่างกายดูดซึมวิตามินเอได้ดีขึ้น ส่วนผักบุ้งมีเบต้าแคโรทีน"
-            "ซึ่งเป็นแหล่งกำเนิดของวิตามินเอสูง ช่วยบำรุงสายตา ทำให้ดวงตามีน้ำหล่อเลี้ยง"
-            "เป็นประกายสวยงาม ไม่แสบ หรือรู้สึกแห้งในตา ผักบุ้งไทยต้นขาวจะมีวิตามินซีสูงกว่าชนิดอื่น ๆ ช่วยบำรุงรักษาเหงือก ฟัน ให้แข็งแรง ช่วยทำให้ผิวสวยมีสุขภาพดี",
-        "มะพร้าวขูดประมาณ 500 กรัม"
-            "\nคั้นให้ได้หัวกะทิ 1 ถ้วย และน้ำกะทิ 3 ½ ถ้วย)"
-            "\nผักบุ้งไทย 1 กำ"
-            "\nหมูสามชั้น 200 กรัม"
-            "\nน้ำมะขามเปียกประมาณ 4 – 5 ช้อนโต๊ะ"
-            "\nน้ำตาลปี๊บ ½ ช้อนโต๊ะ"
-            "\nน้ำปลาประมาณ 2 ช้อนโต๊ะ"
-            "\nเกลือป่น 2 หยิบมือ"
-            "\nมะกรูด 1 ลูก"
-            "\nใบมะกรูด 4 – 5 ใบใหญ่"
-            "\nส่วนผสมพริกแกงเทโพ"
-            "\nพริกแห้ง 10 เม็ด"
-            "\nข่า 3 แว่น"
-            "\nตะไคร้หั่นฝอย 2 ต้น"
-            "\nผิวมะกรูด 1 ช้อนชา"
-            "\nพริกไทยเม็ด 10 เม็ด"
-            "\nหอมแดง 3 หัว"
-            "\nกระเทียม 5 กลีบ"
-            "\nรากผักชีหั่น 3 ต้น"
-            "\nกะปิ 1 ช้อนโต๊ะ"
-            "\nเกลือเม็ดนิดหน่อย",
-        "1.ต้มน้ำต้มกระดูกโดยใส่เปลือกกุ้ง ตะไคร้หั่นท่อน และรากผักชี เมื่อเดือดยกลงกรองเอาแต่น้ำเป็นน้ำสต็อก"
-            "\n2. นำน้ำสต็อกตั้งไฟ ใส่ตะไคร้ เห็ดฟาง พอน้ำเดือดใส่กุ้งรอจนเดือดแล้วใส่น้ำปลา ฉีกใบมะกรูดใส่ลงไป"
-            "\n3. ละลายน้ำพริกเผากับนมข้นจืดในชามเสิร์ฟ คนให้เข้ากัน เติมน้ำมะนาว พริกขี้หนูบุบ"
-            "\n4. ตักต้มยำใส่ชามเสิร์ฟ โรยหน้าด้วยผักชี"),
-    FoodMenu(
-        "3.แกงเขียวหวานลูกชิ้นปลากราย",
-        "     เป็นอาหารไทยแท้ ที่มีกำเนิดในประเทศไทย ได้รับอิทธิพลการใช้เครื่องเทศ และกะทิจากอินเดียและอาหรับเนื้อสัตว์ เช่น เนื้อวัว ปลา ไก่ หรือหมู  ",
-        "assets/menuC/Green_Curry_C.jpg",
-        "     แกงเขียวหวาน เป็นอาหารไทยแท้ ที่มีกำเนิดในประเทศไทย แต่ได้รับอิทธิพลการใช้เครื่องเทศ และกะทิจากอินเดียและอาหรับ"
-            "มีเนื้อสัตว์ เช่น เนื้อวัว ปลา ไก่ หรือหมู เป็นส่วนประกอบหลัก ใส่ผัก ปรุงรสด้วยกะทิ มะเขือ น้ำตาล น้ำปลา ใบมะกรูด"
-            "และใบโหระพา นิยมรับประทานกับข้าวสวยหรือขนมจีนน้ำพริกแกงมีสีเขียวเพราะใช้พริกขี้หนูสดสีเขียว บางท้องที่ใส่ใบพริกลงไปตำด้วย",
-        "     คุณค่าอาหารหลักของแกงเขียวหวาน ประกอบด้วยโปรตีน ไขมัน"
-            "ในปริมาณสูงพอสมควร ใยอาหารสูง โดยมาจากมะเขือพวงและส่วนผสมในเครื่องแกงนอกจากนี้ส่วนประกอบเครื่องแกงล้วนเป็นสมุนไพร"
-            "ทรงคุณค่า ได้แก่ มะเขือพวง เป็นยาระงับปวด ห้ามเลือด ขับปัสสาวะ รักษาโรคหลอดลม และไขข้ออักเสบ"
-            "ใบมะกรูด ใบโหระพา :พริก หัวหอม กระเทียม ข่า ตะไคร้ ช่วยขับลมแก้จุกเสียด ท้องอืด แน่นท้อง ช่วยเจริญอาหารขับเสมหะ แก้หวัด",
-        "ลูกชิ้นปลากราย 250 กรัม"
-            "\nมะเขือเปราะ 100 กรัม"
-            "\nหัวกะทิ 100 กรัม"
-            "\nหางกะทิ 500 กรัม"
-            "\nน้ำพริกแกงเขียวหวาน 40 กรัม"
-            "\nน้ำตาลปี๊บ 15 กรัม"
-            "\nน้ำปลา 2 ช้อนโต๊ะ"
-            "\nพริกชี้ฟ้าแดงหั่นเฉียง 4 เม็ด"
-            "\nโหระพา 4 กรัม"
-            "\nใบมะกรูด 2 ใบ",
-        "1.	ผัดหัวกะทิให้แตกมัน ใส่เครื่องแกงลงผัดกับหัวกะทิให้หอม จากนั้นใส่ลูกชิ้นปลากรายลงผัด"
-            "\n2.ใส่หางกะทิลงไป ตั้งให้เดือด เคี่ยวให้เนื้อสุกนุ่ม ใส่มะเขือเปราะ ปรุงรสด้วยน้ำปลา น้ำตาลปี๊บ"
-            "\n3. ใส่พริกชี้ฟ้า ใส่ใบมะกรูดฉีก ใส่ใบโหระพา"
-            "\n4. ตักใส่ชามเสิร์ฟ"),
-    FoodMenu(
-        "4.แกงมัสมั่นไก่",
-        "     แกงมัสมั่น เป็นอาหารที่ได้รับอิทธิพลมาจากอาหารมลายู ชาวไทยมุสลิมเรียกแกงชนิดนี้ว่า ซาละหมั่น แกงมัสมั่นแบบไทย ออกรสหวานในขณะที่ตำรับดั้งเดิมของชาวมุสลิมออกรสเค็มมัน",
-        "assets/menuC/Chicken_Massaman_C.jpg",
-        "       แกงมัสมั่น เป็นอาหารที่ได้รับอิทธิพลมาจากอาหารมลายู ชาวไทยมุสลิมเรียกแกงชนิดนี้ว่า ซาละหมั่น"
-            "แกงมัสมั่นแบบไทย ออกรสหวานในขณะที่ตำรับดั้งเดิมของชาวมุสลิมออกรสเค็มมัน เอกลักษณ์ที่สำคัญของ"
-            "แกงชนิดนี้คือหอมเครื่องเทศนานาชนิด"
-            "ได้แก่ ลูกผักชีป่น ยี่หร่าป่น กานพลู อบเชย สามารถแกงกับเนื้อสัตว์หลายชนิด"
-            "คนไทยนิยมแกงมัสมั่นไก่ เนื้อวัว และหมู",
-        "     แกงนี้มีไขมันค่อนข้างสูง จึงทำให้มีพลังงานสูง มีโปรตีนจากเนื้อไก่ ใยอาหารและสรรพคุณทางยา จากเครื่องแกง"
-            "ได้แก่ อบเชย ช่วยแก้ท้องอืดท้องเฟ้อ คลื่นไส้ อาเจียน หัวหอมแขกช่วยบรรเทาอาการหวัด"
-            "น้ำมะขามเปียกมีวิตามินซี และเป็นยาระบายอ่อนๆ ยี่หร่า กานพลู"
-            "ช่วยขับลม ขับเสมหะ ส่วนขิงช่วยลดไขมันในเลือดได้",
-        "เนื้อสะโพกหรือน่องไก่ 300 กรัม"
-            "\nเครื่องแกงมัสมั่น 40 กรัม"
-            "\nหัวกะทิ 100 กรัม"
-            "\nหางกะทิ 300 กรัม"
-            "\nน้ำต้มกระดูก 250 กรัม"
-            "\nถั่วลิสงคั่ว 50 กรัม"
-            "\nมันฝรั่ง 100 กรัม"
-            "\nหัวหอมแขก 100 กรัม"
-            "\nน้ำตาลปี๊บ 30 กรัม"
-            "\nน้ำมะขามเปียก 2 ช้อนโต๊ะ"
-            "\nเกลือป่น 1 ช้อนชา"
-            "\nลูกกระวาน 3 กรัม"
-            "\nใบกระวาน 2 กรัม",
-        "1.เคี่ยวกะทิให้แตกมัน ใส่เครื่องแกงมัสมั่น ผัดให้หอม แบ่งหางกะทิเป็น 2 ส่วน นำครึ่งหนึ่งผัดกับเครื่องแกง พอเดือด ใส่ไก่ลงไป เติมหางกะทิที่เหลือ"
-            "\n2. ใส่น้ำต้มกระดูก พอเดือด ใส่ลูกกะวาน ใบกะวาน ถั่วลิสง มันฝรั่ง เคี่ยวจนเนื้อไก่นุ่ม มันฝรั่งสุก แล้วจึงปรุงรสด้วย เกลือป่น น้ำตาลปี๊บ น้ำมะขามเปียก"
-            "\n3. ใส่หัวหอมแขก เคี่ยวต่อจนน้ำงวด"
-            "\n4. ตักใส่ภาชนะเสิร์ฟ"),
-    FoodMenu(
-        "5.แกงเผ็ดไก่ใส่หน่อไม้",
-        "     แกงเผ็ด เป็นแกงกะทิที่สามารถเลือกสรรเนื้อสัตว์และผักในแกงได้หลายแบบ แกงชนิดนี้เมื้อใส่ไก่เป็นส่วนผสมหลัก จึงเรียก แกงเผ็ดไก่ เป็นต้น",
-        "assets/menuC/Bamboo_Shoots_C.png",
-        "       แกงเผ็ด เป็นแกงกะทิที่สามารถเลือกสรรเนื้อสัตว์และผักในแกงได้หลายแบบ ใส่ได้หลากหลาย ทั้งปลา ไก่ เป็ด เป็นต้น"
-            "ชื่อของแกงเผ็ดก็จะมีชื่อตามชนิดของเนื้อสัตว์ แกงชนิดนี้เมื้อใส่ไก่เป็นส่วนผสมหลัก จึงเรียก"
-            "แกงเผ็ดไก่ เป็นต้น สำหรับผักก็สามารถใส่ได้หลากหลายตามชนิดที่ชอบ"
-            "เช่น ใส่มะเขือเปราะ มะเขือพวง มะเขือยาว หน่อไม้ ยอดมะพร้าว และเห็ดฟาง",
-        "     แกงนี้ ประกอบด้วย กะทิ ไก่ เครื่องแกง หน่อไม้ และใบโหระพาเล็กน้อย ดังนั้นจึงคุณค่าทางโภชนาการ"
-            "คือ มีโปรตีนจากไก่ ไขมันจากกะทิซึ่งเป็นไขมันที่มีประโยชน์กับร่างกายสามารถดูดซึมแล้วร่างกายนำไปใช้ได้ทันที"
-            "ช่วยละลายวิตามินให้ร่างกายนำไปใช้ประโยชน์ได้ แล้วก็ใยอาหารจากหน่อไม้ที่ช่วยให้ระบบขับถ่ายทำงานได้ดี",
-        "เนื้ออกไก่ 200 กรัม"
-            "\nเครื่องแกงเผ็ด 40 กรัม"
-            "\nหัวกะทิ 100 กรัม"
-            "\nหางกะทิ 400 กรัม"
-            "\nหน่อไม้เส้นต้มจืดแล้ว 100 กรัม<"
-            "\nน้ำปลา 1 ช้อนโต๊ะ"
-            "\nน้ำตาลปี๊บ 15 กรัม"
-            "\nใบโหระพา 4 กรัม"
-            "\nพริกชี้ฟ้าแดงหั่นเฉียง 2 กรัม"
-            "\nพริกชี้ฟ้าเขียวหั่นเฉียง 2 กรัม"
-            "\nใบมะกรูด 2 ใบ",
-        "1.แบ่งหัวกะทิส่วนหนึ่งผัดให้แตกมัน ใส่เครื่องแกงเผ็ดลงผัด แล้วใส่หัวกะทิ ส่วนที่เหลือผัดจนหอม"
-            "\n2. ใส่เนื้อไก่ลงผัดต่อจนเริ่มสุก เทลงในหม้อ ใส่หางกะทิ พอเดือดปรุงรสด้วยน้ำปลา น้ำตาลปี๊บ พอเดือดใส่หน่อไม้ที่เตรียมไว้ ทิ้งไว้สักพักให้เดือด แล้วฉีกใบมะกรูดใส่"
-            "\n3. ใส่พริกชี้ฟ้าและใบโหระพา คนให้เข้ากันตักใส่ชามเสิร์ฟ"),
-  ];
 
   // Explicit
 
   // Method
-  Widget LiteButton() {
-    return IconButton(
-      icon: const Icon(Icons.favorite),
-      onPressed: () {
-        print('MENU BEER');
-      },
-    );
-  }
 
+  static const textColor = Color(0xFF333333);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   title:
+      //   // Text(widget.changeTitle),
+      //   const Text("5 เมนูอาหารภาคกลางต้องห้ามพลาด"),
+      //   actions: [LiteButton()],
+      // ),
+      // backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(widget.changeTitle),
-        // const Text("5 เมนูอาหารภาคกลางต้องห้ามพลาด"),
-        actions: [LiteButton()],
+        backgroundColor: Colors.deepOrangeAccent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          widget.title,
+          style: TextStyle(
+            fontFamily: 'Kanit',
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: SvgPicture.asset(
+        //     'assets/svg/menu.svg',
+        //     height: 20,
+        //     width: 20,
+        //   ),
+        // ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.search,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
-      backgroundColor: Colors.black,
-      body: ListView.builder(
-          itemCount: menu.length,
-          itemBuilder: (BuildContext context, int index) {
-            FoodMenu food = menu[index];
-            return Column(
-              children: [
-                Card(
-                  margin: const EdgeInsets.all(10),
-                  elevation: 10,
-                  child: InkWell(
-                    // leading: Image.asset(food.img, width: 200.0, height: 200.0),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 50,
-                          width: 300,
-                          margin: const EdgeInsets.symmetric(horizontal: 10.0),
-                          alignment: const Alignment(0.0, 0.0),
-                          child: Text(
-                            food.nfood,
-                            style: TextStyle(
-                                color: Colors.blue[900], fontSize: 20),
-                          ),
-                        ),
-                        Container(
-                          height: 200,
-                          // child: Image.asset('assets/Tom.png', width: 100.0, height: 100.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image:  AssetImage(food.img),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text(
+                'นายสมชาย สมบัติ',
+                style: TextStyle(
+                  fontFamily: 'Kanit',
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+              accountEmail: Text(
+                '62030340@Admin.com',
+                style: TextStyle(
+                  fontFamily: 'Kanit',
+                  fontSize: 15,
+                  color: Colors.white,
+                ),
+              ),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/BUS2.jpg'),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.deepOrangeAccent,
+              ),
 
-                              // image: NetworkImage(food.urlImage),
-                            ),
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            food.subnfood,
-                            style: const TextStyle(color: Colors.black, fontSize: 12),
-                          ),
-                        ),
-                      ],
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DisplayBeerScreen()));
+              },
+              child: Container(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.home,
+                    color: Colors.black,
+                  ),
+                  title: Text(
+                    'หน้าหลัก',
+                    style: TextStyle(
+                      fontFamily: 'Kanit',
+                      fontSize: 20,
+                      color: Colors.black,
                     ),
-                    onTap: () {
-                      setState(() {
-                        widget.changeTitle = "เมนูอาหารจานเด็ด   ${menu[index].nfood}";
-                      });
-
-                      // print(index);
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (BuildContext context) {
-                      //   return Page_Menu_Detail(
-                      //
-                      //       nfood: menu[index].nfood,
-                      //       imgf: menu[index].img,
-                      //       detailf: menu[index].detailfood,
-                      //       dietf: menu[index].dietfood,
-                      //       mashf: menu[index].mashfood,
-                      //       methodf: menu[index].methodfood);
-                      // }));
-                    },
                   ),
                 ),
-              ],
-            );
-          }),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DisplayBeerScreen()));
+              },
+              child: Container(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.fastfood,
+                    color: Colors.black,
+                  ),
+                  title: Text(
+                    'ร้านอาหาร',
+                    style: TextStyle(
+                      fontFamily: 'Kanit',
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: ListTile(
+                leading: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'ตะกร้าสินค้า',
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: ListTile(
+                leading: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'ข้อมูลส่วนตัว',
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'ตั้งค่า',
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: ListTile(
+                leading: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'ออกจากระบบ',
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+
+          ],
+        ),
+      ),
+
+
+
+
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10, bottom: 10),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            getIcon_Bitcoin(),
+            SizedBox(
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
+              child: Text("Thai Food",
+                  style: TextStyle(
+                    color: Color(0xFF333333),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 24,
+                  )),
+            ),
+            getFood_Item(),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Menu",
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF333333)),
+                  ),
+                  Text(
+                    "See all",
+                    style: TextStyle(fontSize: 14, color: Color(0xFF3E4249)),
+                  ),
+                ],
+              ),
+            ),
+            getFood_Card(),
+          ]),
+        ),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _counter,
+        onTap: onTabTapped,
+        unselectedItemColor: Colors.blueGrey,
+        showUnselectedLabels: true,
+        fixedColor: Colors.black87,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_cart,
+              color: Colors.black,
+            ),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.camera_alt,
+              color: Colors.black,
+            ),
+            label: 'Camera',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite,
+              color: Colors.black,
+            ),
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.black,
+            ),
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
+  }
+
+  int selectedCollection = 0;
+  getIcon_Bitcoin() {
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(15, 10, 0, 10),
+      scrollDirection: Axis.horizontal,
+      child: Row(
+          children: List.generate(
+              categories.length,
+              (index) => Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: CategoryBox(
+                    selectedColor: Colors.white,
+                    data: categories[index],
+                    onTap: () {
+                      setState(() {
+                        selectedCollection = index;
+                      });
+                    },
+                  )))),
+    );
+  }
+
+  getFood_Item() {
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
+      scrollDirection: Axis.horizontal,
+      child: Row(
+          children: List.generate(
+              recommends.length,
+              (index) => Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Food_Item(
+                    data: recommends[index],
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Page_Menu_Detail(
+                                  data: recommends[index],
+                                  nfood: '${index + 1}. ' + menu[index].nfood,
+                                  imgf: menu[index].img,
+                                  detailf: menu[index].detailfood,
+                                  dietf: menu[index].dietfood,
+                                  mashf: menu[index].mashfood,
+                                  methodf: menu[index].methodfood)));
+                    },
+                  )))),
+    );
+  }
+
+  getFood_Card() {
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(10, 5, 0, 5),
+      scrollDirection: Axis.horizontal,
+      child: Column(
+          children: List.generate(
+              recommends.length,
+              (index) => Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Food_Item(
+                    data: recommends[index],
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return Custom_Dialog_Box(
+                          id: '${index}',
+                          img: menu[index].img,
+                          title: '${index + 1}. ' + menu[index].nfood,
+                          descriptions: menu[index].subnfood,
+                          dietf: '${menu[index].dietfood}',
+                          methodf: '${menu[index].methodfood}',
+                          imgf: '${menu[index].img}',
+                          detailf: '${menu[index].detailfood}',
+                          nfood: '${menu[index].nfood}',
+                          mashf: '${menu[index].mashfood}',
+                          text: "Okey",
+                        );
+                      }));
+                    },
+                  )))),
     );
   }
 }

@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 
 class Page_Menu_Detail extends StatelessWidget {
   // Page_Menu
-
-  const Page_Menu_Detail({Key? key, required this.nfood, required this.imgf, required this.detailf, required this.dietf, required this.mashf, required this.methodf, }) : super(key: key);
   final String nfood ;
   final String imgf ;
   final String detailf ;
   final String dietf ;
   final String mashf ;
   final String methodf ;
+  const Page_Menu_Detail({Key? key, required this.nfood, required this.imgf, required this.detailf, required this.dietf, required this.mashf, required this.methodf, data, }) : super(key: key);
+
 
 
   // This widget is the root of your application.

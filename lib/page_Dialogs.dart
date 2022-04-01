@@ -21,11 +21,12 @@ class _DialogsState extends State<Dialogs> {
               onPressed: (){
                 showDialog(context: context,
                   builder: (BuildContext context){
-                  return CustomDialogBox(
-                    img: Image.asset("assets/model.jpeg"),
+                  return const CustomDialogBox(
+                    img: "assets/model.jpeg",
                     title: "Custom Dialog Demo",
                     descriptions: "Hii all this is a custom dialog in flutter and  you will be use in your flutter applications",
                     text: "Okey",
+                    index: 2,
 
                   );
                   }
